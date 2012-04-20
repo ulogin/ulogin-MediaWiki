@@ -16,7 +16,15 @@ uLogin — это инструмент, который позволяет пол
 1.Скопировать содержимое /extensions в /mediaWiki/extensions, где /mediaWiki - путь до установленной mediaWiki CMS
 2.Добавить эту строчку в конце файла /mediaWiki/LocalSettings.php:
   require_once( "$IP/extensions/Ulogin/Ulogin.php" );
-3.Добавть в шаблон /mediaWiki/includes/templates/Userlogin.php, в форму userlogin, после строки <p id="userloginlink"><?php $this->html('link') ?></p>:	
+3.Добавть в шаблон /mediaWiki/includes/templates/Userlogin.php:
+
+-в начале функции execute() добавить:
+
+    function execute() {
+      global $wgUloginProviders;
+      global $wgUloginHidden;
+
+-в форму userlogin, после строки <p id="userloginlink"><?php $this->html('link') ?></p>:	
 
     <p><?php $this->msg( 'ulogin-register-text' ); ?></p>
 
@@ -27,7 +35,7 @@ uLogin — это инструмент, который позволяет пол
 
     <p>
         <script src="http://ulogin.ru/js/ulogin.js"></script>
-        <div id="uLogin" x-ulogin-params="display=small&fields=first_name,last_name,nickname,city,photo,photo_big,bdate,sex,email,network&providers=<?php echo $wgUloginPrividerrs ?>&hidden=<?php echo $wgUloginHidden ?>&redirect_uri=<?php echo urlencode('http://'.$_SERVER['HTTP_HOST']).$resultUrl ?>"></div>
+        <div id="uLogin" x-ulogin-params="display=small&fields=first_name,last_name,nickname,city,photo,photo_big,bdate,sex,email,network&providers=<?php echo $wgUloginProviders ?>&hidden=<?php echo $wgUloginHidden ?>&redirect_uri=<?php echo urlencode('http://'.$_SERVER['HTTP_HOST']).$resultUrl ?>"></div>
     </p>
 
 

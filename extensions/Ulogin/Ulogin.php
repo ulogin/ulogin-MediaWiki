@@ -8,8 +8,8 @@ define('Ulogin_VERSION', '1.0');
 
 $dir = dirname(__FILE__) . '/';
 
-$wgUloginPrividerrs = 'vkontakte,odnoklassniki,mailru,facebook';
-$wgUloginHidden = 'twitter,google,yandex,livejournal,openid';
+$wgUloginProviders = 'vkontakte,odnoklassniki,mailru,facebook';
+$wgUloginHidden = 'other';
 
 $wgExtensionCredits['validextensionclass'][] = array(
     'path' => __FILE__,
@@ -20,9 +20,7 @@ $wgExtensionCredits['validextensionclass'][] = array(
     'version' => Ulogin_VERSION,
 );
 
-$wgExtensionMessagesFiles['ulogin'] = dirname(__FILE__) . '/Ulogin.i18n.php';
-
-
+$wgExtensionMessagesFiles['Ulogin'] = dirname(__FILE__) . '/Ulogin.i18n.php';
 $wgHooks['UserLoadFromSession'][] = 'fnUloginAuthenticateHook';
 
 
