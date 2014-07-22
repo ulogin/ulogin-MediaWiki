@@ -1,7 +1,7 @@
 === uLogin - виджет авторизации через социальные сети ===
 Donate link: http://ulogin.ru/
 Tags: ulogin, login, social, authorization
-Tested up to: 1.18.2
+Tested up to: 1.23.1
 Stable tag: 1.7
 License: GPL3
 
@@ -30,12 +30,12 @@ uLogin — это инструмент, который позволяет пол
 
     <?php
         $titleObj = SpecialPage::getTitleFor( 'Userlogin' );
-        $resultUrl = $titleObj->getLocalURL();
+        $resultUrl = urldecode($titleObj->getLocalURL());
     ?>
 
     <p>
-        <script src="http://ulogin.ru/js/ulogin.js"></script>
-        <div id="uLogin" x-ulogin-params="display=small&fields=first_name,last_name,nickname,city,photo,photo_big,bdate,sex,email,network&providers=<?php echo $wgUloginProviders ?>&hidden=<?php echo $wgUloginHidden ?>&redirect_uri=<?php echo urlencode('http://'.$_SERVER['HTTP_HOST']).$resultUrl ?>"></div>
+        <script src="//ulogin.ru/js/ulogin.js"></script>
+        <div id="uLogin" data-ulogin="display=small;fields=first_name,last_name,nickname,city,photo,photo_big,bdate,sex,email;providers=<?php echo $wgUloginProviders ?>;hidden=<?php echo $wgUloginHidden ?>;redirect_uri=<?php echo urlencode('http://'.$_SERVER['HTTP_HOST'].$resultUrl) ?>"></div>
     </p>
 
 
