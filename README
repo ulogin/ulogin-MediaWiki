@@ -24,7 +24,11 @@ uLogin — это инструмент, который позволяет пол
       global $wgUloginProviders;
       global $wgUloginHidden;
 
--в форму userlogin, после строки <p id="userloginlink"><?php $this->html('link') ?></p>:	
+-в форму userlogin, после строки
+    <p id="userloginlink"><?php $this->html('link') ?></p>
+    (в последних версиях можно вставить, например, перед строкой
+    <div id="mw-userlogin-help">
+    ):
 
     <p><?php $this->msg( 'ulogin-register-text' ); ?></p>
 
