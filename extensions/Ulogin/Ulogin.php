@@ -4,25 +4,39 @@ if (!defined('MEDIAWIKI')) {
     die('Not an entry point.');
 }
 
-define('Ulogin_VERSION', '1.0');
+$wgUloginProviders = 'vkontakte,odnoklassniki,mailru,facebook,twitter,google,yandex,livejournal,openid,lastfm,linkedin,soundcloud';
+$wgUloginHidden = 'other';
+
+define('Ulogin_VERSION', '1.1');
 
 $dir = dirname(__FILE__) . '/';
 
-$wgUloginProviders = 'vkontakte,odnoklassniki,mailru,facebook';
-$wgUloginHidden = 'other';
-
 $wgExtensionCredits['validextensionclass'][] = array(
     'path' => __FILE__,
-    'name' => 'Ulogin',
+    'name' => 'uLogin',
     'author' => 'Cramen',
-    'url' => 'https://www.mediawiki.org/wiki/Extension:Example',
-    'description' => 'Авторизация через социальные сети',
+    'url' => 'https://github.com/ulogin/ulogin-MediaWiki',
+    'descriptionmsg' => 'ulogin-desc-text',
     'version' => Ulogin_VERSION,
 );
 
-$wgExtensionMessagesFiles['Ulogin'] = dirname(__FILE__) . '/Ulogin.i18n.php';
-$wgHooks['UserLoadFromSession'][] = 'fnUloginAuthenticateHook';
+$wgExtensionMessagesFiles['ulogin'] = dirname(__FILE__) . '/Ulogin.i18n.php';
 
+$wgHooks['UserLoadFromSession'][] = 'fnUloginAuthenticateHook';
+$wgHooks['UserLoginForm'][] = 'onUserLoginForm';
+
+function onUserLoginForm( &$tpl ) {
+global $wgUloginProviders;
+global $wgUloginHidden;
+   $header = $tpl->get( 'header' );
+   $titleObj = SpecialPage::getTitleFor( 'Userlogin' );
+   $resultUrl = urldecode($titleObj->getLocalURL());
+
+   $header .= '<strong>' . wfMsg( 'ulogin-login-via-social-text' ) . ':</strong><br /><script src="//ulogin.ru/js/ulogin.js"></script>
+               <div id="uLogin" data-ulogin="display=small;fields=first_name,last_name,nickname,email;providers=' . $wgUloginProviders . ';hidden=' . $wgUloginHidden . ';redirect_uri=' . urlencode('http://'.$_SERVER['HTTP_HOST'].$resultUrl) . '"></div>
+               <br /><strong>' . wfMsg( 'ulogin-login-via-standart-text' ) . '</strong>';
+   $tpl->set( 'header', $header );
+}
 
 function fnUloginAuthenticateHook($user, &$result)
 {
