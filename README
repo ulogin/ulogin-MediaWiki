@@ -16,7 +16,7 @@ uLogin — это инструмент, который позволяет пол
 1. Скопировать содержимое /extensions в /mediaWiki/extensions, где /mediaWiki - путь до установленной mediaWiki CMS
 2. Добавить эту строчку в конце файла /mediaWiki/LocalSettings.php:
   require_once( "$IP/extensions/Ulogin/Ulogin.php" );
-3. В файле LocalSettings.php можжно задать используемые параметры:
+3. В файле LocalSettings.php можно задать используемые параметры:
   $wgUloginProviders = 'vkontakte,odnoklassniki,mailru'; //сервисы, выводимые сразу
   $wgUloginHidden = 'other'; //сервисы, выводимые при наведении
   $wgUloginDisplay = 'small'; //или 'panel'
