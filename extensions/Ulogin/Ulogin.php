@@ -6,6 +6,8 @@ if (!defined('MEDIAWIKI')) {
 
 $wgUloginProviders = 'vkontakte,odnoklassniki,mailru,facebook,twitter,google,yandex,livejournal,openid,lastfm,linkedin,soundcloud';
 $wgUloginHidden = 'other';
+$wgUloginDisplay = 'small';
+$wgUloginFields = 'first_name,last_name,nickname,email';
 
 define('Ulogin_VERSION', '1.1');
 
@@ -26,14 +28,16 @@ $wgHooks['UserLoadFromSession'][] = 'fnUloginAuthenticateHook';
 $wgHooks['UserLoginForm'][] = 'onUserLoginForm';
 
 function onUserLoginForm( &$tpl ) {
-global $wgUloginProviders;
-global $wgUloginHidden;
+   global $wgUloginProviders;
+   global $wgUloginHidden;
+   global $wgUloginDisplay;
+   global $wgUloginFields;
    $header = $tpl->get( 'header' );
    $titleObj = SpecialPage::getTitleFor( 'Userlogin' );
    $resultUrl = urldecode($titleObj->getLocalURL());
 
    $header .= '<strong>' . wfMsg( 'ulogin-login-via-social-text' ) . ':</strong><br /><script src="//ulogin.ru/js/ulogin.js"></script>
-               <div id="uLogin" data-ulogin="display=small;fields=first_name,last_name,nickname,email;providers=' . $wgUloginProviders . ';hidden=' . $wgUloginHidden . ';redirect_uri=' . urlencode('http://'.$_SERVER['HTTP_HOST'].$resultUrl) . '"></div>
+               <div id="uLogin" data-ulogin="display=' . $wgUloginDisplay . ';fields=' . $wgUloginFields . ';providers=' . $wgUloginProviders . ';hidden=' . $wgUloginHidden . ';redirect_uri=' . urlencode('http://'.$_SERVER['HTTP_HOST'].$resultUrl) . '"></div>
                <br /><strong>' . wfMsg( 'ulogin-login-via-standart-text' ) . '</strong>';
    $tpl->set( 'header', $header );
 }
