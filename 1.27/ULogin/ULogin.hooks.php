@@ -40,7 +40,7 @@ class ULoginHooks
                 $u->addToDatabase();
                 $u->setRealName($uLoginUser['first_name'] . ' ' . $uLoginUser['last_name']);
                 $u->setEmail($uLoginUser['email']);
-                $u->setPassword(md5($username . $uLoginUser['email']));
+                $u->setPassword(PasswordFactory::generateRandomPasswordString());
                 $u->setToken();
                 $u->saveSettings();
 
