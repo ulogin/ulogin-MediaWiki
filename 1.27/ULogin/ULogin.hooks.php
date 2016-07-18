@@ -13,13 +13,15 @@ class ULoginHooks
         global $wgULoginProviders;
         global $wgULoginHidden;
         global $wgULoginDisplay;
+        global $wgULoginSort;
+        global $wgULoginTheme;
         $header = $tpl->get('header');
 
         $redirectUrl = SpecialPage::getTitleFor('Userlogin')->getFullURL();
 
         $header .= '<script src="//ulogin.ru/js/ulogin.js"></script>' .
             '<p><strong>' . wfMessage('ulogin-login-via-social-text')->text() . ':</strong></p>' .
-            '<div id="uLogin" data-ulogin="display=' . $wgULoginDisplay . ';fields=first_name,last_name,nickname,email;providers=' . $wgULoginProviders . ';hidden=' . $wgULoginHidden . ';redirect_uri=' . urlencode($redirectUrl) . '"></div>' .
+            '<div id="uLogin" data-ulogin="display=' . $wgULoginDisplay . ';theme=' . $wgULoginTheme . ';fields=first_name,last_name,nickname,email;providers=' . $wgULoginProviders . ';hidden=' . $wgULoginHidden . ';sort=' . $wgULoginSort . ';redirect_uri=' . urlencode($redirectUrl) . '"></div>' .
             '<p><strong>' . wfMessage('ulogin-login-via-standart-text')->text() . '</strong></p>';
 
         $tpl->set('header', $header);
