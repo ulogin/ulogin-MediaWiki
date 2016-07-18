@@ -18,7 +18,9 @@
     "config": {
         "ULoginProviders": "vkontakte,odnoklassniki,mailru,facebook,twitter,google,yandex,livejournal,openid,lastfm,linkedin,soundcloud",
         "ULoginHidden": "other",
-        "ULoginDisplay": "small"
+        "ULoginDisplay": "small",
+        "ULoginSort": "relevant",
+        "ULoginTheme": "classic"
     },
     "ExtensionMessagesFiles": {
         "ULoginAlias": "ULogin.i18n.alias.php"
