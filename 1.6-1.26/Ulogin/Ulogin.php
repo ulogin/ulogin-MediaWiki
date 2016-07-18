@@ -66,7 +66,7 @@ function fnUloginAuthenticateHook($user, &$result)
                     $u->addToDatabase();
                     $u->setRealName($user['first_name'] . ' ' . $user['last_name']);
                     $u->setEmail($user['email']);
-                    $u->setPassword(md5($username)); // do something random
+                    $u->setPassword(User::randomPassword()); // do something random
                     $u->setToken();
                     $u->saveSettings();
 
