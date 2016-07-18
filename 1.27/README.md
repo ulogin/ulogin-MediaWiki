@@ -15,7 +15,7 @@ uLogin — это инструмент, который позволяет пол
 
 ### Установка ###
 1. Скопировать содержимое в папку extensions
-2. Добавить эту строчку в конце файла /mediaWiki/LocalSettings.php:
+2. Добавить эту строчку в конце файла LocalSettings.php:
 
   wfLoadExtension( 'ULogin');
 
