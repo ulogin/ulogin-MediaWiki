@@ -15,7 +15,7 @@ class ULoginHooks
         global $wgULoginDisplay;
         $header = $tpl->get('header');
 
-        $redirectUrl = SpecialPage::getTitleFor('Userlogin')->getLinkUrl();
+        $redirectUrl = SpecialPage::getTitleFor('Userlogin')->getFullURL();
 
         $header .= '<script src="//ulogin.ru/js/ulogin.js"></script>' .
             '<p><strong>' . wfMessage('ulogin-login-via-social-text')->text() . ':</strong></p>' .
