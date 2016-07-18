@@ -27,9 +27,9 @@ uLogin — это инструмент, который позволяет пол
 
   $wgULoginDisplay = 'small'; //или 'panel'
 
-  $wgULoginSort = 'relevant '; //или 'default' подробнее: https://ulogin.ru/help.php#sort
+  $wgULoginSort = 'relevant'; //или 'default' подробнее: https://ulogin.ru/help.php#sort
   
-  $wgULoginTheme = 'classic '; //или 'flat'
+  $wgULoginTheme = 'classic'; //или 'flat'
 
 ### Frequently Asked Questions ###
 
