@@ -18,8 +18,11 @@ uLogin — это инструмент, который позволяет пол
 2. Добавить эту строчку в конце файла /mediaWiki/LocalSettings.php:
   wfLoadExtension( 'ULogin');
 3. В файле LocalSettings.php можно задать используемые параметры:
+
   $wgULoginProviders = 'vkontakte,odnoklassniki,mailru'; //сервисы, выводимые сразу
+
   $wgULoginHidden = 'other'; //сервисы, выводимые при наведении
+
   $wgULoginDisplay = 'small'; //или 'panel'
 
 ### Frequently Asked Questions ###
