@@ -16,7 +16,9 @@ uLogin — это инструмент, который позволяет пол
 ### Установка ###
 1. Скопировать содержимое в папку extensions
 2. Добавить эту строчку в конце файла /mediaWiki/LocalSettings.php:
+
   wfLoadExtension( 'ULogin');
+
 3. В файле LocalSettings.php можно задать используемые параметры:
 
   $wgULoginProviders = 'vkontakte,odnoklassniki,mailru'; //сервисы, выводимые сразу
