@@ -4,7 +4,7 @@ Donate link: http://ulogin.ru/
 
 Tags: ulogin, login, social, authorization
 
-Tested up to: 1.27.0
+Tested up to: 1.30.0
 
 License: GPL3
 
