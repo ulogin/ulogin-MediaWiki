@@ -30,9 +30,9 @@ class ULoginHooks
     static function onUserLoadFromSession($user)
     {
         global $wgOut;
-        global $wgTitle;
+        global $wgRequest;
 
-        if (($wgTitle->getText() == SpecialPageFactory::getLocalNameFor('Userlogin')) && isset($_POST['token'])) {
+        if (($wgRequest->getVal('title') == SpecialPageFactory::getTitleForAlias('Userlogin')) && isset($_POST['token'])) {
             $uLoginUser = json_decode(file_get_contents('http://ulogin.ru/token.php' . '?' . http_build_query([
                     'token' => $_POST['token'],
                     'host' => $_SERVER['HTTP_HOST'],
